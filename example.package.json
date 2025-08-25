@@ -1,0 +1,12 @@
+{
+  "name": "your-web-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "prebuild": "node scripts/inject-version.js",
+    "build": "next build",
+    "dev": "next dev",
+    "start": "next start",
+    "lint": "eslint ."
+  }
+}
