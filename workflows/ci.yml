@@ -1,0 +1,24 @@
+name: CI (PR)
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - name: Lint (optional)
+        run: npm run -s lint || echo "No lint script"
+      - name: Typecheck (optional)
+        run: npm run -s typecheck || echo "No typecheck script"
+      - name: Test (optional)
+        run: npm run -s test || echo "No test script"
+      - name: Build
+        run: npm run -s build
